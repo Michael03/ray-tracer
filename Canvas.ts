@@ -1,17 +1,23 @@
 export class Canvas {
-    private ctx : CanvasRenderingContext2D
+    private ctx: CanvasRenderingContext2D
     private canvas: HTMLCanvasElement;
     constructor(id: string) {
         const canvas = document.getElementById(id) as HTMLCanvasElement
         if (!canvas) throw Error(`no canvas found with ${id}`);
         this.canvas = canvas;
-        const ctx = canvas.getContext('2d'); 
+        const ctx = canvas.getContext('2d');
         if (!ctx) throw Error("No contect found");
         this.ctx = ctx;
     }
 
-    public draw (x, y, r, g, b) {
-        this.ctx.fillStyle = "rgba(" + r + "," + g + "," + b + ",255)";
+    public draw(x: number, y: number, r: number, g: number, b: number, sampleSize: number): void {
+        const scale = 1 / sampleSize
+
+        r = Math.sqrt(scale * r);
+        g = Math.sqrt(scale * g);
+        b = Math.sqrt(scale * b);
+
+        this.ctx.fillStyle = "rgba(" + 256*r  + "," + 256*g  + "," + 256*b  + ",255)";
         this.ctx.fillRect(x, y, 1, 1);
     }
 
@@ -28,5 +34,11 @@ export class Canvas {
     }
     set height(val: number) {
         this.canvas.height = val
+    }
+
+    private clamp(num: number, min: number, max: number): number {
+        if (num < min) return min
+        if (num > max) return max
+        return num
     }
 }

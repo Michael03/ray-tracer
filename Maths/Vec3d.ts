@@ -1,9 +1,9 @@
-import {Normal} from "./Normal"
+import { Normal } from "./Normal"
 export class Vec3d {
     public x: number;
     public y: number;
     public z: number;
-    constructor(x: number, y: number = null, z: number) {
+    constructor(x: number, y: number, z: number) {
         this.x = x;
         this.y = y;
         this.z = z;
@@ -21,16 +21,16 @@ export class Vec3d {
         return new Vec3d(this.x - vec.x, this.y - vec.y, this.z - vec.z)
     }
 
-    mult(t: number | Vec3d):this{
-        if(typeof t === 'number') {
-            return new (this.constructor as any)(this.x * t, this.y * t, this.z * t) 
+    mult(t: number | Vec3d): this {
+        if (typeof t === 'number') {
+            return new (this.constructor as any)(this.x * t, this.y * t, this.z * t)
         } else {
             return new (this.constructor as any)(this.x * t.x, this.y * t.y, this.z * t.z)
         }
     }
 
     div(t: number) {
-        return this.mult(1/t);
+        return this.mult(1 / t);
     }
 
     dot(vec: Vec3d) {
@@ -39,9 +39,9 @@ export class Vec3d {
 
     cross(vec: Vec3d) {
         return new Vec3d(this.y * vec.z - this.z * vec.x,
-                this.z & vec.x - this.x * vec.z,
-                this.x * vec.y - this.y * vec.x
-            )
+            this.z & vec.x - this.x * vec.z,
+            this.x * vec.y - this.y * vec.x
+        )
     }
 
     unit() {
@@ -55,6 +55,19 @@ export class Vec3d {
     get lengthSquared() {
         return this.x * this.x + this.y * this.y + this.z * this.z;
     }
+
+    static random(): Vec3d {
+        return new Vec3d(Math.random(), Math.random(), Math.random())
+    }
+
+    static randomInside(min: number, max: number): Vec3d {
+        return new Vec3d(Vec3d.randomBetween(min, max), Vec3d.randomBetween(min, max), Vec3d.randomBetween(min, max))
+    }
+
+    static randomBetween(min: number, max: number): number {
+        return min + (max - min) * Math.random()
+    }
+
 
 
 }

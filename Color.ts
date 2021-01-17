@@ -1,13 +1,13 @@
-import { Vec3d } from "./Vec3d";
+import { Vec3d } from "./Maths/Vec3d";
 
 export class Color extends Vec3d {
     get r() {
-        return this.x * 256
+        return this.x
     }
     get g() {
-        return this.y * 256
+        return this.y
     }
     get b() {
-        return this.z * 256
+        return this.z
     }
 }

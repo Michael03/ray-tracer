@@ -1,28 +1,27 @@
 import { Geometric } from "./Geometric";
 
-import { Ray } from "./Ray"
-import { Normal } from "./Normal"
-import { Point3d } from "./Point3d"
+import { Ray } from "../Maths/Ray"
+import { Normal } from "../Maths/Normal"
+import { Point3d } from "../Maths/Point3d"
 
-export class Plane extends Geometric {
+export class Plane implements Geometric {
 
     private origin: Point3d
     private normal: Normal
 
     constructor(origin: Point3d, normal: Normal) {
-        super();
         this.origin = origin
         this.normal = normal
     }
 
-    public hit(ray: Ray) {
+    public hit(ray: Ray, _tmin: number, tmax: number) {
         let tmin = Number.POSITIVE_INFINITY;
         const t = this.origin.minus(ray.origin).dot(this.normal) / ray.direction.dot(this.normal)
         if (t > 0.00001) {
             tmin = t;
-            return true;
+            return null;// Hit record should be returned
         } else {
-            return false;
+            return null;
         }
         // double t = (point - ray.o) * normal / (ray.d * normal);
         // if (t > kEpsilon) {
