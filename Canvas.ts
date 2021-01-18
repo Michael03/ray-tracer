@@ -17,7 +17,7 @@ export class Canvas {
         g = Math.sqrt(scale * g);
         b = Math.sqrt(scale * b);
 
-        this.ctx.fillStyle = "rgba(" + 256*r  + "," + 256*g  + "," + 256*b  + ",255)";
+        this.ctx.fillStyle = "rgba(" + 256*this.clamp(r, 0.0, 0.999)  + "," + 256*this.clamp(g, 0.0, 0.999)  + "," + 256*this.clamp(b, 0.0, 0.999)  + ",255)";
         this.ctx.fillRect(x, y, 1, 1);
     }
 

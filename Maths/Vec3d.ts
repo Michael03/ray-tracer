@@ -1,4 +1,3 @@
-import { Normal } from "./Normal"
 export class Vec3d {
     public x: number;
     public y: number;
@@ -17,8 +16,12 @@ export class Vec3d {
         return new (this.constructor as any)(this.x + vec.x, this.y + vec.y, this.z + vec.z)
     }
 
-    minus(vec: Vec3d) {
-        return new Vec3d(this.x - vec.x, this.y - vec.y, this.z - vec.z)
+    minus(vec: Vec3d|number) {
+        if (typeof vec === 'number') {
+            return new (this.constructor as any)(this.x -vec, this.y - vec, this.z - vec)
+        } else {
+            return new (this.constructor as any)(this.x - vec.x, this.y - vec.y, this.z - vec.z)
+        }
     }
 
     mult(t: number | Vec3d): this {
@@ -48,6 +51,11 @@ export class Vec3d {
         return this.div(this.length);
     }
 
+    nearZero() {
+        const val = 1e-8
+        return Math.abs(this.x) < val && Math.abs(this.y) < val && Math.abs(this.z) < val
+    }
+
     get length() {
         return Math.sqrt(this.lengthSquared)
     }
@@ -67,7 +75,4 @@ export class Vec3d {
     static randomBetween(min: number, max: number): number {
         return min + (max - min) * Math.random()
     }
-
-
-
 }
