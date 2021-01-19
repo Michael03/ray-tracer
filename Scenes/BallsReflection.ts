@@ -7,9 +7,6 @@ import { Scene } from "./Scene";
 export class BallsReflection implements Scene {
     build(): Geometric {
         const world = new HittablesList();
-        // world.add(new Sphere(new Point3d(0, 0, -1), 0.5))
-        // world.add(new Sphere(new Point3d(0, -100.5, -1), 100))
-
         const matterialGround = new Lambertian(new Color(0.8, 0.8, 0))
         const matterialCenter = new Lambertian(new Color(0.7, 0.3, 0.3))
         const matterialLeft = new Metal(new Color(0.8, 0.8, 0.8))

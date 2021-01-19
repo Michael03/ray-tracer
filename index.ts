@@ -1,14 +1,9 @@
 import { Canvas } from "./Canvas"
 import { Color } from "./Color"
-import { Point3d } from "./Maths/Point3d";
 import { Ray } from "./Maths/Ray";
-import { Sphere } from "./Hittable/Sphere";
 import { Vec3d } from "./Maths/Vec3d";
-import { HittablesList } from "./Hittable/HittablesList";
 import { Geometric } from "./Hittable/Geometric";
 import { Camera } from "./Camera";
-import { Lambertian } from "./Material/Lambertian";
-import { Metal } from "./Material/Metal";
 import {BallsReflection} from "./Scenes"
 const canvas = new Canvas("canvas")
 
@@ -22,7 +17,7 @@ const width = canvas.width = 400
 const height = canvas.height = width / aspectRatio;
 
 const camera = new Camera();
-const samplesPerPixel: number = 100;
+const samplesPerPixel: number = 400;
 const maxDepth = 50
 
 function run() {
