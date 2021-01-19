@@ -1,8 +1,8 @@
 import { Material } from "./Material"
 import { HitRecord } from "../HitRecord"
-import { randomUnitVector } from "../Utils";
-import { Ray } from "../Maths/Ray"
-import { Color } from "../Color"
+import { randomUnitVector } from "../BasicTypes/Utils";
+import { Ray } from "../BasicTypes/Ray"
+import { Color } from "../BasicTypes/Color"
 export class Lambertian implements Material {
     constructor(public color: Color) { }
 

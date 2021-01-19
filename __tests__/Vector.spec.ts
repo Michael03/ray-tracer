@@ -1,4 +1,4 @@
-import { Vec3d } from "../Maths/Vec3d"
+import { Vec3d } from "../src/BasicTypes/Vec3d"
 
 
 

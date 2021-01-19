@@ -1,7 +1,7 @@
 import { Material } from "./Material/Material";
-import { Point3d } from "./Maths/Point3d";
-import { Ray } from "./Maths/Ray";
-import { Vec3d } from "./Maths/Vec3d";
+import { Point3d } from "./BasicTypes/Point3d";
+import { Ray } from "./BasicTypes/Ray";
+import { Vec3d } from "./BasicTypes/Vec3d";
 
 export class HitRecord {
     private frontFace: boolean;

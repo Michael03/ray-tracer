@@ -1,7 +1,7 @@
-import { Point3d } from "./Maths/Point3d";
-import { Ray } from "./Maths/Ray";
+import { Point3d } from "./BasicTypes/Point3d";
+import { Ray } from "./BasicTypes/Ray";
 // import { Point3d } from "./Maths/Point3d";
-import { Vec3d } from "./Maths/Vec3d";
+import { Vec3d } from "./BasicTypes/Vec3d";
 
 export class Camera {
     private origin: Point3d;

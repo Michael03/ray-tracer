@@ -1,8 +1,8 @@
 import { Geometric } from "./Geometric";
 
-import { Ray } from "../Maths/Ray"
-import { Point3d } from "../Maths/Point3d"
-import { Vec3d } from "../Maths/Vec3d";
+import { Ray } from "../BasicTypes/Ray"
+import { Point3d } from "../BasicTypes/Point3d"
+import { Vec3d } from "../BasicTypes/Vec3d";
 import { HitRecord } from "../HitRecord";
 
 export class Sphere implements Geometric {

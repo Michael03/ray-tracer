@@ -1,7 +1,7 @@
 import { Geometric, HittablesList, Sphere } from "../Hittable"
 import { Lambertian, Metal } from "../Material"
-import { Color } from "../Color"
-import { Point3d } from "../Maths/Point3d"
+import { Color } from "../BasicTypes/Color"
+import { Point3d } from "../BasicTypes/Point3d"
 import { Scene } from "./Scene";
 
 export class BallsReflection implements Scene {

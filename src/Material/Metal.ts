@@ -1,9 +1,9 @@
 import { HitRecord } from "../HitRecord";
-import { Ray } from "../Maths/Ray";
+import { Ray } from "../BasicTypes/Ray";
 import { Material } from "./Material";
 
-import { Color } from "../Color"
-import { Vec3d } from "../Maths/Vec3d";
+import { Color } from "../BasicTypes/Color"
+import { Vec3d } from "../BasicTypes/Vec3d";
 export class Metal implements Material {
     constructor(public color: Color) { }
 

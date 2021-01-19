@@ -1,15 +1,15 @@
 import { Canvas } from "./Canvas"
-import { Color } from "./Color"
-import { Ray } from "./Maths/Ray";
-import { Vec3d } from "./Maths/Vec3d";
+import { Color } from "./BasicTypes/Color"
+import { Ray } from "./BasicTypes/Ray";
+import { Vec3d } from "./BasicTypes/Vec3d";
 import { Geometric } from "./Hittable/Geometric";
 import { Camera } from "./Camera";
-import {BallsReflection} from "./Scenes"
+import { BallsReflection } from "./Scenes"
 const canvas = new Canvas("canvas")
 
 //Build
-let a = new BallsReflection()
-const world = a.build();
+let scene = new BallsReflection()
+const world = scene.build();
 
 // Image
 const aspectRatio = 16.0 / 9.0;
@@ -17,15 +17,13 @@ const width = canvas.width = 400
 const height = canvas.height = width / aspectRatio;
 
 const camera = new Camera();
-const samplesPerPixel: number = 400;
+const samplesPerPixel: number = 100;
 const maxDepth = 50
 
 function run() {
     const t0 = performance.now();
     for (let i = height - 1; i >= 0; i--) {
-    for (let j = 0; j < width; j++) {
-    // for (let i = height - 165; i >= 60; i--) {
-        // for (let j = 280; j < 290; j++) {
+        for (let j = 0; j < width; j++) {
             let color = new Color(0, 0, 0)
             for (let n = 0; n < samplesPerPixel; n++) {
                 let v = (i + Math.random()) / (height - 1);
@@ -33,10 +31,7 @@ function run() {
                 const ray = camera.getRay(u, v);
                 color = rayColor(ray, world, maxDepth).add(color)
             }
-            // console.log("draw ", color)
             canvas.draw(j, height - i, color.r, color.g, color.b, samplesPerPixel)
-            // console.log(color);
-            // return;
         }
     }
 
@@ -71,13 +66,9 @@ function rayColor(ray: Ray, world: Geometric, depth: number): Color {
             return color.mult(rayColor(scatter, world, depth - 1))
         }
         return new Color(0, 0, 0);
-        // const target = hitRecord.point.add(hitRecord.normal).add(randomUnitVector());
-        // return rayColor(new Ray(hitRecord.point, target.minus(hitRecord.point)), world, depth - 1).mult(0.5)
     } else {
         const unitVec: Vec3d = ray.direction.unit()
         const t = 0.5 * (unitVec.y + 1)
         return new Color(1, 1, 1).mult(1 - t).add(new Color(0.5, 0.7, 1).mult(t))
-
     }
 }
-

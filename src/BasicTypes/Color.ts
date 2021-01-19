@@ -1,4 +1,4 @@
-import { Vec3d } from "./Maths/Vec3d";
+import { Vec3d } from "./Vec3d";
 
 export class Color extends Vec3d {
     get r() {
