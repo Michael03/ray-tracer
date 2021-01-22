@@ -41,8 +41,8 @@ export class Vec3d {
     }
 
     cross(vec: Vec3d) {
-        return new Vec3d(this.y * vec.z - this.z * vec.x,
-            this.z & vec.x - this.x * vec.z,
+        return new Vec3d(this.y * vec.z - this.z * vec.y,
+            this.z * vec.x - this.x * vec.z,
             this.x * vec.y - this.y * vec.x
         )
     }

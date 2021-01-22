@@ -6,7 +6,7 @@ import { Vec3d } from "./BasicTypes/Vec3d";
 import { Geometric } from "./Hittable/Geometric";
 import { action, autorun, makeObservable, observable } from "mobx";
 export class RayTracer {
-    public samplesPerPixel = 5;
+    public samplesPerPixel = 20;
     public maxDepth = 50;
     constructor(private canvas: Canvas, private camera: Camera, private world: Geometric) {
         makeObservable(this, {

@@ -1,5 +1,5 @@
 import { Vec3d } from "./Vec3d"
-export function degrees_to_radians(degrees: number) {
+export function degreesToRadians(degrees: number) {
     return degrees * Math.PI / 180.0;
 }
 export function randomInUnitSphere() {

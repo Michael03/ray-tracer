@@ -9,8 +9,8 @@ export class BallsReflection implements Scene {
         const world = new HittablesList();
         const matterialGround = new Lambertian(new Color(0.8, 0.8, 0))
         const matterialCenter = new Lambertian(new Color(0.7, 0.3, 0.3))
-        const matterialLeft = new Metal(new Color(0.8, 0.8, 0.8))
-        const matterialRight = new Metal(new Color(0.8, 0.6, 0.2))
+        const matterialLeft = new Metal(new Color(0.8, 0.8, 0.8),0.3)
+        const matterialRight = new Metal(new Color(0.8, 0.6, 0.2),1)
 
         world.add(new Sphere(new Point3d(0, -100.5, -1), 100, matterialGround));
         world.add(new Sphere(new Point3d(0, 0, -1), 0.5, matterialCenter));
