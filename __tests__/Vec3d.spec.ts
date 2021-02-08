@@ -24,3 +24,15 @@ test("Divide by scalar", () => {
 test("Dot product", () => {
     expect(new Vec3d(1, 2, 3).dot(new Vec3d(2,3,4))).toEqual(20)
 })
+
+test("serialize", () => {
+    const vec = new Vec3d(1,2,3);
+    expect(vec.serialize()).toEqual("{\"x\":1,\"y\":2,\"z\":3,\"constructor_name\":\"Vec3d\"}")
+})
+
+
+test("deserialize", () => {
+    const vec = Vec3d.deserialize("{\"x\":1,\"y\":2,\"z\":3,\"constructor_name\":\"Vec3d\"}");
+    vec.add(new Vec3d(1,2,3));
+    expect(vec).toEqual(new Vec3d(1,2,3))
+})

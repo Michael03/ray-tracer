@@ -16,7 +16,14 @@ export class Metal implements Material {
     }
 
     reflect(vec: Vec3d, n: Vec3d): Vec3d {
-        // return ec.minus(2) 
         return vec.minus(n.mult(vec.dot(n)).mult(2))
+    }
+
+    public serialize() {
+        return {color:this.color,fuzz: this.fuzz, className: "Metal"}
+    }
+
+    public static deserialize(json:any) {
+        return new Metal(Color.deserialize(json.color), json.fuzz);
     }
 }

@@ -16,4 +16,12 @@ export class Lambertian implements Material {
 
         return [scattered, this.color, true]
     }
+
+    public serialize() {
+        return {color:this.color, className: "Lambertian"}
+    }
+
+    public static deserialize(json:any) {
+        return new Lambertian(Color.deserialize(json.color));
+    }
 }

@@ -16,9 +16,9 @@ export class Vec3d {
         return new (this.constructor as any)(this.x + vec.x, this.y + vec.y, this.z + vec.z)
     }
 
-    minus(vec: Vec3d|number) {
+    minus(vec: Vec3d | number) {
         if (typeof vec === 'number') {
-            return new (this.constructor as any)(this.x -vec, this.y - vec, this.z - vec)
+            return new (this.constructor as any)(this.x - vec, this.y - vec, this.z - vec)
         } else {
             return new (this.constructor as any)(this.x - vec.x, this.y - vec.y, this.z - vec.z)
         }
@@ -74,5 +74,14 @@ export class Vec3d {
 
     static randomBetween(min: number, max: number): number {
         return min + (max - min) * Math.random()
+    }
+
+
+    public serialize() {
+        return { x: this.x, y: this.y, z: this.z};
+    }
+
+    public static deserialize(json:any) {
+        return new Vec3d(json.x, json.y, json.z);
     }
 }

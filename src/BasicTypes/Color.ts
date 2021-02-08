@@ -10,4 +10,8 @@ export class Color extends Vec3d {
     get b() {
         return this.z
     }
+
+    public static deserialize(json:any) {
+        return new Color(json.x, json.y, json.z)
+    }
 }

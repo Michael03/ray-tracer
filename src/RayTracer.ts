@@ -1,55 +1,41 @@
 import { Camera } from "./Camera";
-import { Canvas } from "./Canvas";
 import { Color } from "./BasicTypes/Color"
 import { Ray } from "./BasicTypes/Ray";
 import { Vec3d } from "./BasicTypes/Vec3d";
 import { Geometric } from "./Hittable/Geometric";
-import { action, autorun, makeObservable, observable } from "mobx";
 export class RayTracer {
-    public samplesPerPixel = 20;
-    public maxDepth = 50;
-    constructor(private canvas: Canvas, private camera: Camera, private world: Geometric) {
-        makeObservable(this, {
-            setSamplesPerPixel: action,
-            run: action,
-            samplesPerPixel: observable,
-            maxDepth: observable
+
+    public trace(pixels: number[], width: number, height: number, world:Geometric, camera:Camera, samplesPerPixel:number, maxDepth:number): Promise<{ x: number, y: number, color: Color }[]> {
+        return new Promise((resolve) => {
+            setTimeout(() => {
+                let colors = this.getColor(pixels, height, width, world, camera, samplesPerPixel, maxDepth)
+                resolve(colors);
+            }, 1);
         })
-        autorun(() => {this.run(), console.log(this.samplesPerPixel)},{delay:1000})
+
     }
 
-    public setSamplesPerPixel(val: number) {
-        this.samplesPerPixel = val;
-    }
-
-    public run() {
-            console.log(`Starting run with ${this.samplesPerPixel}`)
-            const t0 = performance.now();
-            const height = this.canvas.height;
-            const width = this.canvas.width;
-    
-            for (let i = height - 1; i >= 0; i--) {
-                for (let j = 0; j < width; j++) {
-                    let color = new Color(0, 0, 0)
-                    for (let n = 0; n < this.samplesPerPixel; n++) {
-                        let v = (i + Math.random()) / (height - 1);
-                        let u = (j + Math.random()) / (width - 1);
-                        const ray = this.camera.getRay(u, v);
-                        color = this.rayColor(ray, this.world, this.maxDepth).add(color)
-                    }
-                    this.canvas.draw(j, height - i, color.r, color.g, color.b, this.samplesPerPixel)
-                }
+    private getColor(pixels: number[], height: number, width: number, world:Geometric, camera: Camera, samplesPerPixel: number, maxDepth:number): { x: number, y: number, color: Color }[] {
+        const res: { x: number, y: number, color: Color }[] = []
+        for (let i = 0; i < pixels.length; i++) {
+            let x = pixels[i] % width;
+            let y = Math.floor(pixels[i] / width)
+            let color = new Color(0, 0, 0)
+            for (let n = 0; n < samplesPerPixel; n++) {
+                let v = (height - y + Math.random()) / (height - 1)
+                let u = (x + Math.random()) / (width - 1)
+                const ray = camera.getRay(u, v)
+                color = this.rayColor(ray, world, maxDepth).add(color)
             }
-    
-            const t1 = performance.now();
-            console.log(`took ${t1 - t0} milliseconds`)
+            res.push({ color, x, y })
+        }
+        return res
     }
 
     private rayColor(ray: Ray, world: Geometric, depth: number): Color {
         if (depth <= 0) {
-            return new Color(0, 0, 0)
+            return new Color(0,0,0)
         }
-
         let hitRecord = world.hit(ray, 0.001, Number.POSITIVE_INFINITY);
         if (hitRecord) {
             const [scatter, color, boo] = hitRecord.matterial.scatter(ray, hitRecord)

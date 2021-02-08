@@ -2,10 +2,10 @@ import { Canvas } from "./Canvas"
 
 import { Camera } from "./Camera";
 import { BallsReflection,RedBlue } from "./Scenes"
-import * as ReactDOM from "react-dom"
-import * as React from "react"
-import { Controls } from "./UI/Components/Controls"
-import { RayTracer } from "./RayTracer"
+// import * as ReactDOM from "react-dom"
+// import * as React from "react"
+// import { Controls } from "./UI/Components/Controls"
+import { Application } from "./Application"
 import { Point3d } from "./BasicTypes/Point3d";
 import { Vec3d } from "./BasicTypes/Vec3d";
 
@@ -27,10 +27,10 @@ const cameraLookAt = new Point3d(0,0,-1);
 const vup = new Vec3d(0,1,0)
 const camera = new Camera(cameraOrigin, cameraLookAt, vup,45, aspectRatio);
 
-const rayTracer = new RayTracer(canvas, camera, world)
+const application = new Application(canvas, camera, world)
+application.run();
 
-
-ReactDOM.render(
-  <Controls rayTracer={rayTracer} />,
-  document.getElementById('controls')
-);
+// ReactDOM.render(
+//   <Controls application={application} camera={camera} />,
+//   document.getElementById('controls')
+// );

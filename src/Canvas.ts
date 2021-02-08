@@ -21,6 +21,11 @@ export class Canvas {
         this.ctx.fillRect(x, y, 1, 1);
     }
 
+    public clear() {
+        this.ctx.fillStyle = "rgba(0,0,0,255)";
+        this.ctx.fillRect(0, 0, this.width, this.height);
+    }
+
     get width() {
         return this.canvas.width
     }
