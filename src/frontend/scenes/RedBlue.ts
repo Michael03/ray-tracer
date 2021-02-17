@@ -1,7 +1,7 @@
-import { Geometric, HittablesList, Sphere } from "../Hittable"
-import { Lambertian } from "../Material"
-import { Color } from "../BasicTypes/Color"
-import { Point3d } from "../BasicTypes/Point3d"
+import { Geometric, HittablesList, Sphere } from "../../shared/hittable"
+import { Lambertian } from "../../shared/material"
+import { Color } from "../../shared/basics/Color"
+import { Point3d } from "../../shared/basics/Point3d"
 import { Scene } from "./Scene";
 
 export class RedBlue implements Scene {

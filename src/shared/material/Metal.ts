@@ -1,10 +1,10 @@
-import { HitRecord } from "../HitRecord";
-import { Ray } from "../BasicTypes/Ray";
+import { HitRecord } from "../../backend/js/HitRecord";
+import { Ray } from "../basics/Ray";
 import { Material } from "./Material";
 
-import { Color } from "../BasicTypes/Color"
-import { Vec3d } from "../BasicTypes/Vec3d";
-import { randomInUnitSphere } from "../BasicTypes/Utils";
+import { Color } from "../basics/Color"
+import { Vec3d } from "../basics/Vec3d";
+import { randomInUnitSphere } from "../basics/Utils";
 
 export class Metal implements Material {
     constructor(public color: Color, private fuzz: number) { }

@@ -1,8 +1,7 @@
-import { isJSDocPublicTag } from "typescript";
-import { Point3d } from "./BasicTypes/Point3d";
-import { Ray } from "./BasicTypes/Ray";
-import { degreesToRadians } from "./BasicTypes/Utils";
-import { Vec3d } from "./BasicTypes/Vec3d";
+import { Point3d } from "../shared/basics/Point3d";
+import { Ray } from "../shared/basics/Ray";
+import { degreesToRadians } from "../shared/basics/Utils";
+import { Vec3d } from "../shared/basics/Vec3d";
 
 export class Camera {
     private ray = new Ray(new Point3d(0, 0, 0), new Vec3d(0, 0, 0))

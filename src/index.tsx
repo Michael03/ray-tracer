@@ -1,13 +1,13 @@
-import { Canvas } from "./Canvas"
+import { Canvas } from "./frontend/Canvas"
 
-import { Camera } from "./Camera";
-import { BallsReflection,RedBlue } from "./Scenes"
+import { Camera } from "./frontend/Camera";
+import { BallsReflection,RedBlue } from "./frontend/scenes"
 // import * as ReactDOM from "react-dom"
 // import * as React from "react"
 // import { Controls } from "./UI/Components/Controls"
-import { Application } from "./Application"
-import { Point3d } from "./BasicTypes/Point3d";
-import { Vec3d } from "./BasicTypes/Vec3d";
+import { Application } from "./frontend/Application"
+import { Point3d } from "./shared/basics/Point3d";
+import { Vec3d } from "./shared/basics/Vec3d";
 
 console.log("Starting")
 
@@ -29,8 +29,3 @@ const camera = new Camera(cameraOrigin, cameraLookAt, vup,45, aspectRatio);
 
 const application = new Application(canvas, camera, world)
 application.run();
-
-// ReactDOM.render(
-//   <Controls application={application} camera={camera} />,
-//   document.getElementById('controls')
-// );

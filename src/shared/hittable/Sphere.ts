@@ -1,10 +1,10 @@
 import { Geometric } from "./Geometric";
 
-import { Ray } from "../BasicTypes/Ray"
-import { Point3d } from "../BasicTypes/Point3d"
-import { Vec3d } from "../BasicTypes/Vec3d";
-import { HitRecord } from "../HitRecord";
-import { Lambertian, Metal } from "../Material";
+import { Ray } from "../basics/Ray"
+import { Point3d } from "../basics/Point3d"
+import { Vec3d } from "../basics/Vec3d";
+import { HitRecord } from "../../backend/js/HitRecord";
+import { Lambertian, Metal } from "../material";
 
 export class Sphere implements Geometric {
 

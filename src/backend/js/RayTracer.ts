@@ -1,8 +1,8 @@
-import { Camera } from "./Camera";
-import { Color } from "./BasicTypes/Color"
-import { Ray } from "./BasicTypes/Ray";
-import { Vec3d } from "./BasicTypes/Vec3d";
-import { Geometric } from "./Hittable/Geometric";
+import { Camera } from "../../frontend/Camera";
+import { Color } from "../../shared/basics/Color"
+import { Ray } from "../../shared/basics/Ray";
+import { Vec3d } from "../../shared/basics/Vec3d";
+import { Geometric } from "../../shared/hittable/Geometric";
 export class RayTracer {
 
     public trace(pixels: number[], width: number, height: number, world:Geometric, camera:Camera, samplesPerPixel:number, maxDepth:number): Promise<{ x: number, y: number, color: Color }[]> {

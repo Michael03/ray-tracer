@@ -1,10 +1,7 @@
 import { Geometric } from "./Geometric";
 
-import { Ray } from "../BasicTypes/Ray"
-import { Normal } from "../BasicTypes/Normal"
-import { Point3d } from "../BasicTypes/Point3d"
-import { Vec3d } from "../BasicTypes/Vec3d";
-import { HitRecord } from "../HitRecord";
+import { Ray } from "../basics/Ray"
+import { HitRecord } from "../../backend/js/HitRecord";
 import { Sphere } from "./Sphere";
 
 export class HittablesList implements Geometric {
